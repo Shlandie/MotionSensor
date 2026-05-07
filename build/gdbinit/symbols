@@ -13,8 +13,8 @@ end
 
 # Load bootloader symbols
 set confirm off
-    add-symbol-file C:/Users/bobo-outside/workspace/MotionSensor/build/bootloader/bootloader.elf
+    add-symbol-file C:/Users/bobo/Desktop/ESP32_Projects/MotionSensor/build/bootloader/bootloader.elf
 set confirm on
 
 # Load application symbols
-file C:/Users/bobo-outside/workspace/MotionSensor/build/app-template.elf
+file C:/Users/bobo/Desktop/ESP32_Projects/MotionSensor/build/app-template.elf

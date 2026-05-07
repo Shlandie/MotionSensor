@@ -16,6 +16,6 @@ dependencies:
 direct_dependencies:
 - heronet/tm1637
 - idf
-manifest_hash: 7b465b8954ea6710e6f551848b441574ddea6082839a45dc471ad416963c3db8
+manifest_hash: f7fed7d6bb02d67ca26dc0a39905f56f935665d2894cdbd8ca0326f28340674f
 target: esp32s3
 version: 3.0.0
