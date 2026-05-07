@@ -1,3 +1,0 @@
-CompileFlags:
-  CompilationDatabase: C:\Users\bobo\Desktop\ESP32_Projects\MotionSensor\build
-  Remove: [-m*, -f*]

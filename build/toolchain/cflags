@@ -1,5 +1,0 @@
--mlongcalls
--fno-builtin-memcpy
--fno-builtin-memset
--fno-builtin-bzero
-"-specs=C:/Users/bobo/Desktop/ESP32_Projects/MotionSensor/build/specs/picolibc.specs"
