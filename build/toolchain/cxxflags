@@ -2,5 +2,5 @@
 -fno-builtin-memcpy
 -fno-builtin-memset
 -fno-builtin-bzero
-"-specs=C:/Users/bobo/Desktop/ESP32_Projects/MotionSensor/build/specs/picolibc.specs"
+"-specs=C:/Users/bobo-outside/workspace/MotionSensor/build/specs/picolibc.specs"
 -fno-rtti

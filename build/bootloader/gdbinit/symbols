@@ -17,4 +17,4 @@ set confirm off
 set confirm on
 
 # Load application symbols
-file C:/Users/bobo/Desktop/ESP32_Projects/MotionSensor/build/bootloader/bootloader.elf
+file C:/Users/bobo-outside/workspace/MotionSensor/build/bootloader/bootloader.elf

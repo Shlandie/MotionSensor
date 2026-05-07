@@ -6223,7 +6223,7 @@
             }
         ],
         "depends_on": null,
-        "id": "example-configuration-C:-Users-bobo-Desktop-ESP32_Projects-MotionSensor-main-Kconfig.projbuild-2",
+        "id": "example-configuration-C:-Users-bobo-outside-workspace-MotionSensor-main-Kconfig.projbuild-2",
         "title": "Example Configuration",
         "type": "menu"
     },

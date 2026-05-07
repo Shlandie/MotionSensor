@@ -1,11 +1,9 @@
 #ifndef DISPLAY_H 
 #define DISPLAY_H
 
-#define DISPLAY_GPIO_MOTION_SENSOR 					11
-#define DISPLAY_GPIO_BUTTON							12
-#define DISPLAY_GPIO_LED							10
+#include "esp_event_base.h"
 
-
+esp_err_t display_init(void);
 
 void display_task_create(void);
 

@@ -1,2 +1,2 @@
-source C:/Users/bobo/Desktop/ESP32_Projects/MotionSensor/build/gdbinit/symbols
-source C:/Users/bobo/Desktop/ESP32_Projects/MotionSensor/build/gdbinit/connect
+source C:/Users/bobo-outside/workspace/MotionSensor/build/gdbinit/symbols
+source C:/Users/bobo-outside/workspace/MotionSensor/build/gdbinit/connect
