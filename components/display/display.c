@@ -4,9 +4,6 @@
 
 #include "esp_log.h"
 
-#include "driver/gpio.h"
-#include "driver/ledc.h"
-
 #include "tm1637.h"
 
 #include "common.h"
@@ -19,9 +16,7 @@ static const char TAG[] = "display_task";
 
 static TaskHandle_t display_task_handle;
 tm1637_handle_t display_handle;
-SemaphoreHandle_t semaphore_start_display;
 
-static uint16_t g_current_duty = 2000;
 TickType_t g_display_time;									// Made global so ISRS can adjust and let the display start countdown at exact 1s interval after their events
 bool shutdown_display = false;									
 
@@ -49,11 +44,7 @@ esp_err_t display_init()
 
 static void display_task(void *pvParameters)
 {
-
-	init_GPIO();
-	init_LEDC();
 	display_init();
-	init_ISRS();
 	
 	for(;;)
 	{

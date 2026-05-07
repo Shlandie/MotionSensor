@@ -1,5 +1,19 @@
 #include <stdio.h>
+
+#include "freertos/FreeRTOS.h"
+
+#include "esp_log.h"
+
+#include "driver/gpio.h"
+#include "driver/ledc.h"
+
 #include "lamp.h"
+#include "common.h"
+
+
+
+SemaphoreHandle_t semaphore_start_display;
+static uint16_t g_current_duty = 2000;
 
 /*
 * Initialize all GPIOs for the program.
@@ -68,10 +82,7 @@ static void IRAM_ATTR motion_sensor_isr(void *args)
 	// Check if it's falling or rising edge
 	if(gpio_get_level(DISPLAY_GPIO_MOTION_SENSOR) == 1)
 	{
-		tm1637_clear(display_handle);
-		ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, g_current_duty);
-		ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
-		shutdown_display = true;
+
 	}
 	else
 	{

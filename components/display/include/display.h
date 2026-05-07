@@ -1,7 +1,7 @@
 #ifndef DISPLAY_H 
 #define DISPLAY_H
 
-#include "esp_event_base.h"
+#include "esp_err.h"
 
 esp_err_t display_init(void);
 

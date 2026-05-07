@@ -1,4 +1,4 @@
-"-specs=C:/Users/bobo-outside/workspace/MotionSensor/build/bootloader/specs/picolibc.specs"
+"-specs=C:/Users/bobo/Desktop/ESP32_Projects/MotionSensor/build/bootloader/specs/picolibc.specs"
 -mlongcalls
 -fno-builtin-memcpy
 -fno-builtin-memset
