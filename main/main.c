@@ -27,11 +27,15 @@ void app_main(void)
 	// Init hardware
 	init_GPIO();
 	init_LEDC();
-	init_displa
+	init_display();
 	
+	// Create tasks
+	lamp_task_create();
+	display_task_create();
 	
 	// Install global GPIO ISR service
 	ESP_ERROR_CHECK(gpio_install_isr_service(0));
 	
-	display_task_create();
+	// Init GPIO ISRS
+	lamp_gpio_isr_init();
 }

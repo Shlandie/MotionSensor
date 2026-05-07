@@ -43,9 +43,7 @@ esp_err_t display_init()
 
 
 static void display_task(void *pvParameters)
-{
-	display_init();
-	
+{	
 	for(;;)
 	{
 		/*

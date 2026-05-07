@@ -24,6 +24,8 @@ static void lamp_ledc_init(void);
 * Initialize ISRS for motion sensor (FALLING AND RISING EDGE) and button
 * @return ESP_OK
 */
-void lampini(void);
+void lamp_gpio_isr_init(void);
 
+
+void lamp_task_create(void);
 

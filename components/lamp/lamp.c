@@ -10,8 +10,9 @@
 
 #include "lamp.h"
 #include "common.h"
+#include "freertos/idf_additions.h"
 
-
+TaskHandle_t lamp_task_handle;
 SemaphoreHandle_t semaphore_start_display;
 static uint16_t g_current_duty = 2000;
 
@@ -88,10 +89,7 @@ static void IRAM_ATTR button_isr(void *args)
 	
 }
 
-/*
-* Initialize ISRS for motion sensor (FALLING AND RISING EDGE) and button
-@return ESP_OK
-*/
+
 void init_ISRS()
 {	
 	// Add motion sensor GPIO ISR handler
@@ -100,4 +98,45 @@ void init_ISRS()
 	// Add button GPIO ISR handler
 	ESP_ERROR_CHECK(gpio_isr_handler_add(DISPLAY_GPIO_BUTTON, button_isr, NULL));
 }
+
+
+static void lamp_task(void *pvParameters)
+{
+	for(;;)
+	{
+		
+		vTaskDelay(pdMS_TO_TICKS(300));
+	}
+	
+}
+
+
+void lamp_task_create()
+{
+	xTaskCreatePinnedToCore(lamp_task, "lamp_task", LAMP_TASK_STACK_SIZE, NULL, LAMP_TASK_PRIORITY, &lamp_task_handle, LAMP_TASK_CORE_ID);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
