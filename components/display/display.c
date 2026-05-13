@@ -16,6 +16,8 @@ static const char TAG[] = "display_task";
 TaskHandle_t display_task_handle;
 tm1637_handle_t display_handle;
 
+EventGroupHandle_t display_eventgroup;
+
 TickType_t g_display_time;									// Made global so ISRS can adjust and let the display start countdown at exact 1s interval after their events
 bool g_display_shutdown_display;									
 
@@ -45,8 +47,8 @@ static void display_task(void *pvParameters)
 {	
 	for(;;)
 	{
-		display_events = xEventGroupCreate();
-		xTaskNotifyWaitIndexed(0, 0, (1 << 0), NULL, portMAX_DELAY);
+		display_eventgroup = xEventGroupCreate();
+		xEventGroupWaitBits(display_events, const EventBits_t uxBitsToWaitFor, const BaseType_t xClearOnExit, const BaseType_t xWaitForAllBits, TickType_t xTicksToWait)
 		
 		uint8_t count = 6;
 		for(int i = 0; i <= count; i++)
