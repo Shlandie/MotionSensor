@@ -2345,7 +2345,6 @@ CONFIG_FATFS_DONT_TRUST_LAST_ALLOC=0
 #
 # default:
 # CONFIG_FREERTOS_SMP is not set
-# default:
 # CONFIG_FREERTOS_UNICORE is not set
 # default:
 CONFIG_FREERTOS_HZ=100

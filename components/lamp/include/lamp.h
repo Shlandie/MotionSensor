@@ -1,10 +1,10 @@
 #pragma once
 
-#include "esp_err.h"
+#define OFF											0
 
-#define DISPLAY_GPIO_MOTION_SENSOR 					11
-#define DISPLAY_GPIO_BUTTON							12
-#define DISPLAY_GPIO_LED							10
+#define LAMP_GPIO_MOTION_SENSOR 					9
+#define LAMP_GPIO_BUTTON							38
+#define LAMP_GPIO_LED								10
 
 /*
 * Initialize all GPIOs for the program.
@@ -12,13 +12,13 @@
 * Button (INPUT)  
 * @return ESP_OK
 */
-static void lamp_gpio_init(void);
+void lamp_gpio_init(void);
 
 /*
 * Initialize single LEDC to control variable brightness via button interrupt later on
 @return ESP_OK
 */
-static void lamp_ledc_init(void);
+void lamp_ledc_init(void);
 
 /*
 * Initialize ISRS for motion sensor (FALLING AND RISING EDGE) and button

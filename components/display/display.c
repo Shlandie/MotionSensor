@@ -1,24 +1,23 @@
-#include <stdio.h>
+#include "soc/gpio_num.h"
 
+#include "sdkconfig.h"
 #include "freertos/FreeRTOS.h"
+#include "freertos/idf_additions.h"
 
 #include "esp_log.h"
 
 #include "tm1637.h"
 
-#include "common.h"
-#include "freertos/idf_additions.h"
-#include "freertos/projdefs.h"
-#include "soc/gpio_num.h"
 #include "display.h"
+#include "common.h"
+#include "lamp_private.h"
 
 static const char TAG[] = "display_task";
-
-static TaskHandle_t display_task_handle;
+TaskHandle_t display_task_handle;
 tm1637_handle_t display_handle;
 
 TickType_t g_display_time;									// Made global so ISRS can adjust and let the display start countdown at exact 1s interval after their events
-bool shutdown_display = false;									
+bool g_display_shutdown_display;									
 
 /*
 * Initialize the display via heronet_tm1637 dependancy
@@ -46,36 +45,26 @@ static void display_task(void *pvParameters)
 {	
 	for(;;)
 	{
-		/*
-		xSemaphoreTake(semaphore_start_display, portMAX_DELAY);
+		display_events = xEventGroupCreate();
+		xTaskNotifyWaitIndexed(0, 0, (1 << 0), NULL, portMAX_DELAY);
 		
 		uint8_t count = 6;
 		for(int i = 0; i <= count; i++)
 		{
-			g_display_time = xTaskGetTickCount();
-			*/
-			/* Check if Motion Sensor ISR reset the internal sensors timer and shut down the display if so
+			//g_display_time = xTaskGetTickCount();
+		/*
+			 Check if Motion Sensor ISR reset the internal sensors timer and shut down the display if so
 			 Else do countdown if Motion Sensor output is low (sensors base value 3 seconds + 3 seconds from manual addition) */
-			/*if(shutdown_display == true)
-			{
-				break;
-			}
-			
+
 			tm1637_show_number(display_handle, (count - i),
 						                                 0, 4, 0);
-			
-			vTaskDelayUntil(&g_display_time, pdMS_TO_TICKS(1000));	
+			if (xTaskNotifyWaitIndexed(1, 0, (1 << DISPLAY_EVENT_RESTART_COUNT), NULL, pdMS_TO_TICKS(1000)) == pdTRUE)
+			{
+				count = 6;	
+			}
 		}
-		
-		if(shutdown_display == false)
-		{
-			ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, 0);
-			ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
-			tm1637_clear(display_handle);
-		*/
-		vTaskDelay(pdMS_TO_TICKS(300));
+		lamp_stop_internal();
 	}
-	
 }
 
 

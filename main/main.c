@@ -1,10 +1,8 @@
-#include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/idf_additions.h"
-#include "freertos/projdefs.h"
 
 #include "esp_err.h"
 #include "esp_log.h"
@@ -22,12 +20,12 @@ void app_main(void)
 	
 	// Wait 1 min for motion sensor to stabilize
 	ESP_LOGI(TAG, "Motion sensor stabilizing ( 1 min )");
-   	vTaskDelay(pdMS_TO_TICKS(60000));
+   //	vTaskDelay(pdMS_TO_TICKS(60000));
 	
 	// Init hardware
-	init_GPIO();
-	init_LEDC();
-	init_display();
+	lamp_gpio_init();
+	lamp_ledc_init();
+	display_init();
 	
 	// Create tasks
 	lamp_task_create();

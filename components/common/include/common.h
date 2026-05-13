@@ -2,7 +2,7 @@
 #define TASKS_COMMON_H
 
 // Lamp Task
-#define LAMP_TASK_STACK_SIZE								1024
+#define LAMP_TASK_STACK_SIZE								4096
 #define LAMP_TASK_PRIORITY									4
 #define LAMP_TASK_CORE_ID									0
 

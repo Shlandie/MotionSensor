@@ -1,8 +1,6 @@
-#ifndef COMPONENTS_LAMP_INCLUDE_LAMP_PRIVATE_H_
-#define COMPONENTS_LAMP_INCLUDE_LAMP_PRIVATE_H_
+#pragma once
 
-
-
-
-
-#endif /* COMPONENTS_LAMP_INCLUDE_LAMP_PRIVATE_H_ */
+/*
+* Stop the lamp glow
+*/
+void lamp_stop_internal(void);
